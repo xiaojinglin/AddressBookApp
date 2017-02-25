@@ -6,24 +6,33 @@ using System.Web;
 
 namespace AddressBook.Models
 {
-    public enum GroupName
-    {
-        Family = 1,
-        Friend = 2,
-        Colleague = 3,
-        Schoolmate = 4,
-        Stranger = 5
-    }
     public class Group
     {
+        public enum GroupType
+
+        {
+            Family,
+            Friend,
+            Colleague,
+            Schoolmate,
+            Stranger
+        }
+
         public Group()
         {
-            Contacts = new List<Contact>();
+        }
+
+        public Group(GroupType groundType, string groundName = null)
+        {
+            GroupId = (int)groundType;
+
+            // If we don't have a groundName argument, 
+            // then use the string representation of the grounp type for the groundName.
+            GroupName = groundName ?? groundType.ToString();
         }
         [Key]
         public int GroupId { get; set; }
         public string GroupName { get; set; }
-
-        public virtual ICollection<Contact> Contacts { get; set; }
+        
     }
 }

@@ -1,4 +1,5 @@
 ﻿@model IEnumerable<AddressBook.Models.Contact>
+@using AddressBook.Models
 
     @{
     ViewBag.Title = "Index";
@@ -12,7 +13,7 @@
     <table class="table">
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Groups)
+                @Html.DisplayNameFor(model => model.Group)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Name.FirstName)
@@ -36,7 +37,7 @@
     {
         <tr>  
             <td>
-                @Html.DisplayFor(modelItem => item.GroupNames)
+                @Html.DisplayFor(modelItem => item.Group.GroupName)
             </td>        
             <td>
                 @Html.DisplayFor(modelItem => item.Name.FirstName)

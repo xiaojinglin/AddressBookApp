@@ -12,14 +12,17 @@ namespace AddressBook.Migrations
                 c => new
                     {
                         ContactId = c.Int(nullable: false, identity: true),
-                        NameId = c.Int(nullable: false),
-                        Phone = c.String(),
+                        GroupId = c.Int(nullable: false),
+                        Phone = c.String(nullable: false),
                         Address = c.String(),
                         Email = c.String(),
+                        Name_NameId = c.Int(),
                     })
                 .PrimaryKey(t => t.ContactId)
-                .ForeignKey("dbo.Name", t => t.NameId)
-                .Index(t => t.NameId);
+                .ForeignKey("dbo.Group", t => t.GroupId)
+                .ForeignKey("dbo.Name", t => t.Name_NameId)
+                .Index(t => t.GroupId)
+                .Index(t => t.Name_NameId);
             
             CreateTable(
                 "dbo.Group",
@@ -35,35 +38,19 @@ namespace AddressBook.Migrations
                 c => new
                     {
                         NameId = c.Int(nullable: false, identity: true),
-                        FirstName = c.String(),
+                        FirstName = c.String(nullable: false),
                         LastName = c.String(),
                     })
                 .PrimaryKey(t => t.NameId);
-            
-            CreateTable(
-                "dbo.GroupContact",
-                c => new
-                    {
-                        Group_GroupId = c.Int(nullable: false),
-                        Contact_ContactId = c.Int(nullable: false),
-                    })
-                .PrimaryKey(t => new { t.Group_GroupId, t.Contact_ContactId })
-                .ForeignKey("dbo.Group", t => t.Group_GroupId)
-                .ForeignKey("dbo.Contact", t => t.Contact_ContactId)
-                .Index(t => t.Group_GroupId)
-                .Index(t => t.Contact_ContactId);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.Contact", "NameId", "dbo.Name");
-            DropForeignKey("dbo.GroupContact", "Contact_ContactId", "dbo.Contact");
-            DropForeignKey("dbo.GroupContact", "Group_GroupId", "dbo.Group");
-            DropIndex("dbo.GroupContact", new[] { "Contact_ContactId" });
-            DropIndex("dbo.GroupContact", new[] { "Group_GroupId" });
-            DropIndex("dbo.Contact", new[] { "NameId" });
-            DropTable("dbo.GroupContact");
+            DropForeignKey("dbo.Contact", "Name_NameId", "dbo.Name");
+            DropForeignKey("dbo.Contact", "GroupId", "dbo.Group");
+            DropIndex("dbo.Contact", new[] { "Name_NameId" });
+            DropIndex("dbo.Contact", new[] { "GroupId" });
             DropTable("dbo.Name");
             DropTable("dbo.Group");
             DropTable("dbo.Contact");

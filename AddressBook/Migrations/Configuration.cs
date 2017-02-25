@@ -22,20 +22,15 @@ namespace AddressBook.Migrations
             context.Names.AddOrUpdate(
                 n => new { n.FirstName, n.LastName },
                 NameJohnDoe,
-            NameLilyWang,
-            NameJohnChen
+                NameLilyWang,
+                NameJohnChen
             );
 
-            const int GroupIdFamily = (int)GroupName.Family;
-            const int GroupIdFriend = (int)GroupName.Friend;
-            const int GroupIdColleague = (int)GroupName.Colleague;
-            const int GroupIdSchoolmate = (int)GroupName.Schoolmate;
-            const int GroupIdStranger = (int)GroupName.Stranger;
-            var groupFamily = new Group() { GroupId = GroupIdFamily, GroupName = GroupName.Family.ToString() };
-            var groupFriend = new Group() { GroupId = GroupIdFriend, GroupName = GroupName.Friend.ToString() };
-            var groupColleague = new Group() { GroupId = GroupIdColleague, GroupName = GroupName.Colleague.ToString() };
-            var groupSchoolmate = new Group() { GroupId = GroupIdSchoolmate, GroupName = GroupName.Schoolmate.ToString() };
-            var groupStranger = new Group() { GroupId = GroupIdStranger, GroupName = GroupName.Stranger.ToString() };
+            var groupFamily = new Group(Group.GroupType.Family);
+            var groupFriend = new Group(Group.GroupType.Friend);
+            var groupColleague = new Group(Group.GroupType.Colleague);
+            var groupSchoolmate = new Group(Group.GroupType.Schoolmate);
+            var groupStranger = new Group(Group.GroupType.Stranger);
 
             context.Groups.AddOrUpdate(
                 g => g.GroupName,
@@ -49,13 +44,13 @@ namespace AddressBook.Migrations
             var contact1 = new Contact()
             {
                 ContactId = 1,
-                NameId = 1,
+                GroupId = groupFamily.GroupId,
                 Phone = "5022222222",
                 Address = "Usa",
                 Email = "JohnDoe@gmail.com",
-                
+                Name = NameJohnDoe,
+
             };
-            contact1.AddGroup(groupFamily);
 
             context.Contacts.AddOrUpdate(
                 c => c.ContactId,
@@ -64,13 +59,13 @@ namespace AddressBook.Migrations
             var contact2 = new Contact()
             {
                 ContactId = 2,
-                NameId = 2,
+                GroupId = groupFriend.GroupId,
                 Phone = "5022222345",
                 Address = "Usa",
-                Email = "LilyWang@gmail.com"
+                Email = "LilyWang@gmail.com",
+                Name = NameLilyWang,
             };
-
-            contact2.AddGroup(groupFriend);
+            
 
             context.Contacts.AddOrUpdate(
                 c => c.ContactId,
@@ -79,14 +74,12 @@ namespace AddressBook.Migrations
             var contact3 = new Contact()
             {
                 ContactId = 3,
-                NameId = 3,
+                GroupId = groupSchoolmate.GroupId,
                 Phone = "5022222678",
                 Address = "China",
-                Email = "JohnChen@gmail.com"
+                Email = "JohnChen@gmail.com",
+                Name = NameJohnChen,
             };
-
-            contact3.AddGroup(groupFriend);
-            contact3.AddGroup(groupSchoolmate);
 
             context.Contacts.AddOrUpdate(
                 c => c.ContactId,

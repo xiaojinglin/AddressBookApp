@@ -19,7 +19,7 @@ namespace AddressBook.Controllers
         {
             var contacts = db.Contacts
                 .Include(c => c.Name)
-                .Include(c => c.Groups);
+                .Include(c => c.Group);
             return View(db.Contacts.ToList());
         }
 
@@ -41,6 +41,8 @@ namespace AddressBook.Controllers
         // GET: Contacts/Create
         public ActionResult Create()
         {
+
+            SetupGroupsSelectListItems();
             return View();
         }
 
@@ -49,15 +51,17 @@ namespace AddressBook.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ContactId,Phone,Address,Email")] Contact contact)
+        public ActionResult Create( Contact contact)
         {
+
             if (ModelState.IsValid)
             {
                 db.Contacts.Add(contact);
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            }
 
+            }
+            SetupGroupsSelectListItems();
             return View(contact);
         }
 
@@ -73,6 +77,8 @@ namespace AddressBook.Controllers
             {
                 return HttpNotFound();
             }
+
+            SetupGroupsSelectListItems();
             return View(contact);
         }
 
@@ -81,14 +87,17 @@ namespace AddressBook.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ContactId,Phone,Address,Email")] Contact contact)
+        public ActionResult Edit(Contact contact)
         {
+            //contact.Group.GroupId = 2;
             if (ModelState.IsValid)
             {
                 db.Entry(contact).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
+            SetupGroupsSelectListItems();
             return View(contact);
         }
 
@@ -125,6 +134,12 @@ namespace AddressBook.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        private void SetupGroupsSelectListItems()
+        {
+            ViewBag.GroupsSelectListItems = new SelectList(
+                db.Groups, "GroupId", "GroupName");
         }
     }
 }

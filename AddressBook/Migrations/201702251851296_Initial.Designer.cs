@@ -13,7 +13,7 @@ namespace AddressBook.Migrations
         
         string IMigrationMetadata.Id
         {
-            get { return "201702241630431_Initial"; }
+            get { return "201702251851296_Initial"; }
         }
         
         string IMigrationMetadata.Source

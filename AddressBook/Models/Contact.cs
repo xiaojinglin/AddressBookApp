@@ -10,11 +10,12 @@ namespace AddressBook.Models
     {
         public Contact()
         {
-            Groups = new List<Group>();
+            
         }
         [Key]
         public int ContactId { get; set; }
-        public int NameId { get; set; }
+        //public int NameId { get; set; }
+        public int GroupId { get; set; }
 
         [Required(ErrorMessage = "Please enter a phone number")]
         [RegularExpression(@"\d{10}", ErrorMessage = "Phone number is invalid")]
@@ -28,23 +29,8 @@ namespace AddressBook.Models
         public virtual Name Name { get; set; }
 
 
-        public virtual ICollection<Group> Groups { get; set; }
+        public virtual Group Group { get; set; }
 
-        public string GroupNames
-        {
-            get
-            {
-                var groupNamesDisplayText = "";
-                var groupNames = Groups.Select(g => g.GroupName).ToList();
-                groupNamesDisplayText = string.Join(", ", groupNames);
-                return groupNamesDisplayText;
-            }
-        }
 
-        public void AddGroup(Group group)
-        {
-            Groups.Add(group);
-        }
-        
     }
 }
