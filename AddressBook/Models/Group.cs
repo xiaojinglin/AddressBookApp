@@ -20,6 +20,7 @@ namespace AddressBook.Models
 
         public Group()
         {
+            contacts = new List<Contact>();
         }
 
         public Group(GroupType groundType, string groundName = null)
@@ -34,5 +35,6 @@ namespace AddressBook.Models
         public int GroupId { get; set; }
         public string GroupName { get; set; }
         
+        public ICollection<Contact> contacts { get; set; }
     }
 }

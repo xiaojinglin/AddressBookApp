@@ -53,19 +53,26 @@ namespace AddressBook.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create( Contact contact)
         {
+            var newName = db.Names
+                    .Where(n => (n.FirstName == contact.Name.FirstName && n.LastName == contact.Name.LastName))
+                    .SingleOrDefault();
 
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && newName == null)
             {
                 db.Contacts.Add(contact);
                 db.SaveChanges();
                 return RedirectToAction("Index");
 
             }
-            SetupGroupsSelectListItems();
-            return View(contact);
+            if (newName != null)
+            {
+                ModelState.AddModelError("", "The name you enter is existed already");
+            }
+                SetupGroupsSelectListItems();
+                return View(contact);
         }
 
-        // GET: Contacts/Edit/5
+        // GET: Contacts/Edit/5 
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -89,12 +96,23 @@ namespace AddressBook.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit(Contact contact)
         {
-            //contact.Group.GroupId = 2;
+            var original = db.Contacts.Find(contact.ContactId);
+            var UpdatedContact = db.Contacts
+                .Where(c => c.Name.FirstName == contact.Name.FirstName && c.Name.LastName == contact.Name.LastName)
+                .SingleOrDefault();
             if (ModelState.IsValid)
             {
-                db.Entry(contact).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if (UpdatedContact == null || UpdatedContact.ContactId == contact.ContactId)
+                {
+                    original.Name = contact.Name;
+                    original.GroupId = contact.GroupId;
+                    original.Phone = contact.Phone;
+                    original.Address = contact.Address;
+                    original.Email = contact.Email;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                ModelState.AddModelError("", "The name you are going to update to is existed already");
             }
 
             SetupGroupsSelectListItems();
@@ -122,6 +140,7 @@ namespace AddressBook.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Contact contact = db.Contacts.Find(id);
+            db.Names.Remove(contact.Name);
             db.Contacts.Remove(contact);
             db.SaveChanges();
             return RedirectToAction("Index");

@@ -31,5 +31,7 @@ namespace AddressBook.Models
         public DbSet<Contact> Contacts { get; set; }
         public DbSet<Name> Names { get; set; }
         public DbSet<Group> Groups { get; set; }
+
+        
     }
 }

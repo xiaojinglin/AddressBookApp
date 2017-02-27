@@ -14,7 +14,7 @@ namespace AddressBook.Models
         }
         [Key]
         public int ContactId { get; set; }
-        //public int NameId { get; set; }
+        public int NameId { get; set; }
         public int GroupId { get; set; }
 
         [Required(ErrorMessage = "Please enter a phone number")]
