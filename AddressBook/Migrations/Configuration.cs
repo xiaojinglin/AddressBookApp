@@ -45,10 +45,10 @@ namespace AddressBook.Migrations
             {
                 ContactId = 1,
                 GroupId = groupFamily.GroupId,
-                NameId = NameJohnDoe.NameId,
                 Phone = "5022222222",
                 Address = "Usa",
-                Email = "JohnDoe@gmail.com"
+                Email = "JohnDoe@gmail.com",
+                Name = NameJohnDoe
 
             };
 
@@ -60,10 +60,10 @@ namespace AddressBook.Migrations
             {
                 ContactId = 2,
                 GroupId = groupFriend.GroupId,
-                NameId = NameLilyWang.NameId,
                 Phone = "5022222345",
                 Address = "Usa",
-                Email = "LilyWang@gmail.com"
+                Email = "LilyWang@gmail.com",
+                Name = NameLilyWang
             };
             
 
@@ -75,10 +75,10 @@ namespace AddressBook.Migrations
             {
                 ContactId = 3,
                 GroupId = groupSchoolmate.GroupId,
-                NameId = NameJohnChen.NameId,
                 Phone = "5022222678",
                 Address = "China",
-                Email = "JohnChen@gmail.com"
+                Email = "JohnChen@gmail.com",
+                Name = NameJohnChen
             };
 
             context.Contacts.AddOrUpdate(

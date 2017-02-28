@@ -12,17 +12,17 @@ namespace AddressBook.Migrations
                 c => new
                     {
                         ContactId = c.Int(nullable: false, identity: true),
-                        NameId = c.Int(nullable: false),
                         GroupId = c.Int(nullable: false),
                         Phone = c.String(nullable: false),
                         Address = c.String(),
                         Email = c.String(),
+                        Name_NameId = c.Int(),
                     })
                 .PrimaryKey(t => t.ContactId)
                 .ForeignKey("dbo.Group", t => t.GroupId)
-                .ForeignKey("dbo.Name", t => t.NameId)
-                .Index(t => t.NameId)
-                .Index(t => t.GroupId);
+                .ForeignKey("dbo.Name", t => t.Name_NameId)
+                .Index(t => t.GroupId)
+                .Index(t => t.Name_NameId);
             
             CreateTable(
                 "dbo.Group",
@@ -47,10 +47,10 @@ namespace AddressBook.Migrations
         
         public override void Down()
         {
-            DropForeignKey("dbo.Contact", "NameId", "dbo.Name");
+            DropForeignKey("dbo.Contact", "Name_NameId", "dbo.Name");
             DropForeignKey("dbo.Contact", "GroupId", "dbo.Group");
+            DropIndex("dbo.Contact", new[] { "Name_NameId" });
             DropIndex("dbo.Contact", new[] { "GroupId" });
-            DropIndex("dbo.Contact", new[] { "NameId" });
             DropTable("dbo.Name");
             DropTable("dbo.Group");
             DropTable("dbo.Contact");
