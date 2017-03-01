@@ -8,7 +8,21 @@
     <h2>Index</h2>
 
     <p>
-        @Html.ActionLink("Add a new Contact", "Index", "Add", null, null)
+    @Html.ActionLink("Add a new Contact", "Index", "Add", null, null)
+    @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+    {
+            <div class="form-inline">
+                <label> Filter by group:</label>
+                @Html.DropDownList("GroupType",
+                                EnumHelper.GetSelectList(typeof(Group.GroupType)),
+                                "Select Group Type",
+                                new { @class = "form-control" })
+                    <input type="submit" value="Filter" class="btn btn-default"/>
+                   @* <input type="hidden" name="Search" id="Search" value="@ViewBag.Search" />*@
+                
+            </div>
+    }
+
     </p>
     <table class="table">
         <tr>
