@@ -23,14 +23,10 @@ namespace AddressBook.Controllers
         {
             var contacts = _db.Contacts.Include(c => c.Group)
                 .Include(c=>c.Name);
-            //var contacts = _db.Contacts
-            //                .OrderBy(c => c.Group.GroupName)
-            //                .ThenBy(c => c.Name.LastName)
-            //                .ThenBy(c => c.Name.FirstName);
 
             if (GroupType!=null)
             {
-                contacts = contacts.Where(c=>c.GroupId == GroupType);
+                contacts = contacts.Where(c=>c.GroupId == GroupType+1);
             }
 
             if (!string.IsNullOrEmpty(search))

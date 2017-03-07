@@ -3,15 +3,12 @@
     ViewBag.Title = "Add a new Contact";
 }
 
-<h2>Add</h2>
-
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
     <div class="form-horizontal">
-        <h4>Contact</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
