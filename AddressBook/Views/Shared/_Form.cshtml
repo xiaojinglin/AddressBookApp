@@ -5,6 +5,7 @@
     <div class="col-md-10">
         @Html.DropDownListFor(m => m.GroupId,
                     (SelectList)ViewBag.GroupsSelectListItems, "", new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.GroupId, "", new { @class = "text-danger" })
     </div>
 </div>
 

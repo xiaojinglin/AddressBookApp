@@ -18,6 +18,9 @@ namespace AddressBook.Migrations
             var NameJohnDoe = new Name() { NameId = 1, FirstName = "John", LastName = "Doe" };
             var NameLilyWang = new Name() { NameId = 2, FirstName = "Lily", LastName = "Wang" };
             var NameJohnChen = new Name() { NameId = 3, FirstName = "John", LastName = "Chen" };
+            var NameCandyLin = new Name() { NameId = 4, FirstName = "Candy", LastName = "Lin" };
+            var NameJoeDoe = new Name() { NameId =5, FirstName = "Joe", LastName = "Doe" };
+            var NameEmmaXu = new Name() { NameId = 6, FirstName = "Emma", LastName = "Xu" };
 
             context.Names.AddOrUpdate(
                 n => new { n.FirstName, n.LastName },
@@ -84,6 +87,50 @@ namespace AddressBook.Migrations
             context.Contacts.AddOrUpdate(
                 c => c.ContactId,
                 contact3);
+
+            var contact4 = new Contact()
+            {
+                ContactId = 4,
+                GroupId = groupFamily.GroupId,
+                Phone = "5022222123",
+                Address = "Usa",
+                Email = "CandyLin@gmail.com",
+                Name = NameCandyLin
+
+            };
+
+            context.Contacts.AddOrUpdate(
+                c => c.ContactId,
+                contact4);
+
+            var contact5 = new Contact()
+            {
+                ContactId = 2,
+                GroupId = groupFamily.GroupId,
+                Phone = "5022222789",
+                Address = "Usa",
+                Email = "JoeDoe@gmail.com",
+                Name = NameJoeDoe
+            };
+
+
+            context.Contacts.AddOrUpdate(
+                c => c.ContactId,
+                contact5);
+
+            var contact6 = new Contact()
+            {
+                ContactId = 6,
+                GroupId = groupColleague.GroupId,
+                Phone = "5022222678",
+                Address = "China",
+                Email = "EmmaXu@gmail.com",
+                Name = NameEmmaXu
+            };
+
+            context.Contacts.AddOrUpdate(
+                c => c.ContactId,
+                contact6);
         }
     }
 }

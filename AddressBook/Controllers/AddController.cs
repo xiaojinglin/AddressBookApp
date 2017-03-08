@@ -33,6 +33,7 @@ namespace AddressBook.Controllers
             {
                 _db.Contacts.Add(contact);
                 _db.SaveChanges();
+                TempData["Message"] = "Your entry was successfully added!";
                 return RedirectToAction("Index", "Home");
 
             }

@@ -38,6 +38,7 @@ namespace AddressBook.Controllers
             _db.Names.Remove(contact.Name);
             _db.Contacts.Remove(contact);
             _db.SaveChanges();
+            TempData["Message"] = "Your entry was successfully deleted!";
             return RedirectToAction("Index", "Home");
         }
     }

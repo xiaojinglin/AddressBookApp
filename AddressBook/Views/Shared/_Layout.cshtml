@@ -8,7 +8,7 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body>
+<body style="background-color:antiquewhite">
     <div class="navbar navbar-inverse navbar-fixed-top" style="font-size: 1.5em; background-color:orange; color:white">
         <div class="container">
             <div class="navbar-header">
@@ -17,15 +17,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Address Book", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })                           
+                @Html.ActionLink("Address Book", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-left">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Groups", "Groups", "Home")</li>
                     <li>@Html.ActionLink("Add Contact", "Index", "Add")</li>
-                </ul> 
+                </ul>
                 <div class="col-lg-3 col-md-4 col-sm-5 col-xs-5" style="padding-top: 5px">
-                    @using (Html.BeginForm("Index", "Home", FormMethod.Get, new { @class = "navbar-formt" }))
+                    @using (Html.BeginForm("Index", "Home", FormMethod.Get, new { @class = "navbar-form" }))
                     {
 
                         <div class="input-group">
@@ -34,16 +35,13 @@
                                 <button type="submit" class="btn btn-default"><i class="glyphicon glyphicon-search"></i></button>
                             </div>
                         </div>
-
                     }
                 </div>
-                    </div>
-
-
+            </div>
 
         </div>
     </div>
-    <div class="container body-content">
+    <div class="container body-content" style="background-color:white; padding-top:2em;">
         @RenderBody()
         <hr />
         <footer>

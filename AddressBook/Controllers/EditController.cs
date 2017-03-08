@@ -52,6 +52,7 @@ namespace AddressBook.Controllers
                     original.Address = contact.Address;
                     original.Email = contact.Email;
                     _db.SaveChanges();
+                    TempData["Message"] = "Your entry was successfully updated!";
                     return RedirectToAction("Index", "Home");
                 }
                 ModelState.AddModelError("", "The name you are going to update to is existed already");

@@ -14,6 +14,8 @@ namespace AddressBook.Models
         }
         [Key]
         public int ContactId { get; set; }
+
+        [Required(ErrorMessage = "Please select a group")]
         public int GroupId { get; set; }
 
         [Required(ErrorMessage = "Please enter a phone number")]
@@ -24,10 +26,10 @@ namespace AddressBook.Models
 
         [RegularExpression(@"^\s*([A-Za-z0-9_-]+(\.\w+)*@([\w-]+\.)+\w{2,3})\s*$", ErrorMessage = "Email is invalid")]
         public string  Email { get; set; }
-
+        
         public virtual Name Name { get; set; }
 
-
+        
         public virtual Group Group { get; set; }
 
 

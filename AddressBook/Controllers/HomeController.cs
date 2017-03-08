@@ -19,14 +19,14 @@ namespace AddressBook.Controllers
         }
 
         // GET: Contacts
-        public ActionResult Index(int? GroupType, string search)
+        public ActionResult Index(int? GroupId, string search)
         {
             var contacts = _db.Contacts.Include(c => c.Group)
                 .Include(c=>c.Name);
 
-            if (GroupType!=null)
+            if (GroupId!=null)
             {
-                contacts = contacts.Where(c=>c.GroupId == GroupType+1);
+                contacts = contacts.Where(c=>c.GroupId == GroupId);
             }
 
             if (!string.IsNullOrEmpty(search))
@@ -42,15 +42,33 @@ namespace AddressBook.Controllers
             }
 
             contacts = contacts
-                        .OrderBy(c => c.Group.GroupName)
-                        .ThenBy(c => c.Name.LastName)
+                        .OrderBy(c => c.Name.LastName)
                         .ThenBy(c => c.Name.FirstName);
-
+            SetupGroupsSelectListItems();
+            SetupGroups();
             return View(contacts.ToList());
         }
 
-        
-       
+        public ActionResult Groups()
+        {
+            SetupGroups();
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Groups(Group group)
+        {
+            if(group.GroupName!=null)
+            {
+                _db.Groups.Add(group);
+                _db.SaveChanges();
+                TempData["Message"] = "Your entry was successfully added!";
+                return RedirectToAction("Groups", "Home");
+            }
+            SetupGroups();
+            return View();
+
+        }
 
         // GET: Contacts/Details/5
         public ActionResult Details(int? id)
@@ -71,6 +89,11 @@ namespace AddressBook.Controllers
         {
             ViewBag.GroupsSelectListItems = new SelectList(
                 _db.Groups, "GroupId", "GroupName");
+        }
+
+        private void SetupGroups()
+        {
+            ViewBag.Groups = _db.Groups;
         }
     }
 }

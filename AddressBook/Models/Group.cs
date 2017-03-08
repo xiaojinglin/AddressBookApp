@@ -33,6 +33,8 @@ namespace AddressBook.Models
         }
         [Key]
         public int GroupId { get; set; }
+
+        [Required(ErrorMessage = "Please enter a group name")]
         public string GroupName { get; set; }
         
         public ICollection<Contact> contacts { get; set; }
