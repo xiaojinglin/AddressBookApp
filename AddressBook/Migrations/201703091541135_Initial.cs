@@ -29,7 +29,7 @@ namespace AddressBook.Migrations
                 c => new
                     {
                         GroupId = c.Int(nullable: false, identity: true),
-                        GroupName = c.String(),
+                        GroupName = c.String(nullable: false),
                     })
                 .PrimaryKey(t => t.GroupId);
             

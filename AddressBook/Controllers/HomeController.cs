@@ -13,22 +13,26 @@ namespace AddressBook.Controllers
     public class HomeController : Controller
     {
         private Context _db = new Context();
+
+        //Adding a constructor that requires an instance of the DbContext
         public HomeController(Context db)
         {
             _db = db;
         }
 
-        // GET: Contacts
+        // GET:Home/Index
         public ActionResult Index(int? GroupId, string search)
         {
             var contacts = _db.Contacts.Include(c => c.Group)
                 .Include(c=>c.Name);
 
+            //Filter the contacts by group
             if (GroupId!=null)
             {
                 contacts = contacts.Where(c=>c.GroupId == GroupId);
             }
 
+            //Search contacts
             if (!string.IsNullOrEmpty(search))
             {
                 contacts = contacts.Where(c => c.Group.GroupName.Contains(search) ||
@@ -41,56 +45,45 @@ namespace AddressBook.Controllers
 
             }
 
+            //Order the contacts
             contacts = contacts
                         .OrderBy(c => c.Name.LastName)
                         .ThenBy(c => c.Name.FirstName);
+
+            //get the select list of groups
             SetupGroupsSelectListItems();
+
+            //get groups
             SetupGroups();
+
             return View(contacts.ToList());
-        }
+        }       
 
-        public ActionResult Groups()
-        {
-            SetupGroups();
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Groups(Group group)
-        {
-            if(group.GroupName!=null)
-            {
-                _db.Groups.Add(group);
-                _db.SaveChanges();
-                TempData["Message"] = "Your entry was successfully added!";
-                return RedirectToAction("Groups", "Home");
-            }
-            SetupGroups();
-            return View();
-
-        }
-
-        // GET: Contacts/Details/5
+        //GET: Home/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
+            //Get the contact
             Contact contact = _db.Contacts.Find(id);
             if (contact == null)
             {
                 return HttpNotFound();
             }
             return View(contact);
-        }
+        }     
 
+        //A function to set up groups SelectList
         private void SetupGroupsSelectListItems()
         {
             ViewBag.GroupsSelectListItems = new SelectList(
                 _db.Groups, "GroupId", "GroupName");
         }
 
+        //A function to get set up groups
         private void SetupGroups()
         {
             ViewBag.Groups = _db.Groups;

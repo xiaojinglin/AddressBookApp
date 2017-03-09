@@ -15,6 +15,7 @@ namespace AddressBook.Controllers
         {
             _db = db;
         }
+
         // GET: Delete
         public ActionResult Index(int? id)
         {
@@ -22,6 +23,7 @@ namespace AddressBook.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
+
             Contact contact = _db.Contacts.Find(id);
             if (contact == null)
             {
@@ -30,10 +32,12 @@ namespace AddressBook.Controllers
             return View(contact);
         }
 
+        // POST: Delete
         [HttpPost, ActionName("Index")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            //Find the contact and remove the name and then remove the contact
             Contact contact = _db.Contacts.Find(id);
             _db.Names.Remove(contact.Name);
             _db.Contacts.Remove(contact);

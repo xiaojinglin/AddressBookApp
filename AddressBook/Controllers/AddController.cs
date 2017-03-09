@@ -21,14 +21,17 @@ namespace AddressBook.Controllers
             return View();
         }
 
+        // POST: Add
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Index(Contact contact)
         {
+            //Search the new name from the existing data
             var newName = _db.Names
                     .Where(n => (n.FirstName == contact.Name.FirstName && n.LastName == contact.Name.LastName))
                     .SingleOrDefault();
 
+            //Insert the new contact to the database
             if (ModelState.IsValid && newName == null)
             {
                 _db.Contacts.Add(contact);
@@ -37,10 +40,12 @@ namespace AddressBook.Controllers
                 return RedirectToAction("Index", "Home");
 
             }
+
             if (newName != null)
             {
                 ModelState.AddModelError("", "The name you enter is existed already");
             }
+
             SetupGroupsSelectListItems();
             return View(contact);
         }

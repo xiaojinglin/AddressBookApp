@@ -15,6 +15,7 @@ namespace AddressBook.Migrations
 
         protected override void Seed(AddressBook.Models.Context context)
         {
+            //Initialize the contact names
             var NameJohnDoe = new Name() { NameId = 1, FirstName = "John", LastName = "Doe" };
             var NameLilyWang = new Name() { NameId = 2, FirstName = "Lily", LastName = "Wang" };
             var NameJohnChen = new Name() { NameId = 3, FirstName = "John", LastName = "Chen" };
@@ -22,19 +23,14 @@ namespace AddressBook.Migrations
             var NameJoeDoe = new Name() { NameId =5, FirstName = "Joe", LastName = "Doe" };
             var NameEmmaXu = new Name() { NameId = 6, FirstName = "Emma", LastName = "Xu" };
 
-            context.Names.AddOrUpdate(
-                n => new { n.FirstName, n.LastName },
-                NameJohnDoe,
-                NameLilyWang,
-                NameJohnChen
-            );
+            //Initialize the groups
+            var groupFamily = new Group { GroupId = 1, GroupName = "Family" };
+            var groupFriend = new Group { GroupId = 2, GroupName = "Friend" };
+            var groupColleague = new Group { GroupId = 3, GroupName = "Colleague" };
+            var groupSchoolmate = new Group { GroupId = 4, GroupName = "Schoolmate" };
+            var groupStranger = new Group { GroupId = 5, GroupName = "Stranger" };
 
-            var groupFamily = new Group(Group.GroupType.Family);
-            var groupFriend = new Group(Group.GroupType.Friend);
-            var groupColleague = new Group(Group.GroupType.Colleague);
-            var groupSchoolmate = new Group(Group.GroupType.Schoolmate);
-            var groupStranger = new Group(Group.GroupType.Stranger);
-
+            //Insert the groups to the database
             context.Groups.AddOrUpdate(
                 g => g.GroupName,
                 groupFamily,
@@ -44,6 +40,7 @@ namespace AddressBook.Migrations
                 groupStranger
                 );
 
+            //Initialize the contacts and insert them to the database
             var contact1 = new Contact()
             {
                 ContactId = 1,

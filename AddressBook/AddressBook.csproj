@@ -176,13 +176,14 @@
     <Compile Include="Controllers\AddController.cs" />
     <Compile Include="Controllers\DeleteController.cs" />
     <Compile Include="Controllers\EditController.cs" />
+    <Compile Include="Controllers\GroupController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201702272352272_Initial.cs" />
-    <Compile Include="Migrations\201702272352272_Initial.Designer.cs">
-      <DependentUpon>201702272352272_Initial.cs</DependentUpon>
+    <Compile Include="Migrations\201703091541135_Initial.cs" />
+    <Compile Include="Migrations\201703091541135_Initial.Designer.cs">
+      <DependentUpon>201703091541135_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Contact.cs" />
@@ -235,7 +236,9 @@
     <Content Include="Views\Edit\Index.cshtml" />
     <Content Include="Views\Delete\Index.cshtml" />
     <Content Include="Views\Shared\_DeleteDetail.cshtml" />
-    <Content Include="Views\Home\Groups.cshtml" />
+    <Content Include="Views\Group\Index.cshtml" />
+    <Content Include="Views\Group\GroupEdit.cshtml" />
+    <Content Include="Views\Group\GroupDelete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -249,8 +252,8 @@
     <Content Include="Scripts\jquery-1.10.2.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201702272352272_Initial.resx">
-      <DependentUpon>201702272352272_Initial.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201703091541135_Initial.resx">
+      <DependentUpon>201703091541135_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

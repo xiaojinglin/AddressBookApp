@@ -1,13 +1,28 @@
 ﻿body {
+    background-color:antiquewhite;
     padding-top: 50px;
     padding-bottom: 20px;
 }
 
 /* Set padding to keep content from hitting the edges */
 .body-content {
+    background-color:white; 
+    padding-top:15px;
     padding-left: 15px;
     padding-right: 15px;
 }
+
+/*Style the navgation bar*/
+.navbar-site {
+    font-size: 1.5em; 
+    background-color:orange;
+    color:white;
+}
+
+.navbar-search {
+     padding-top: 2px;
+}
+
 
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 
@@ -21,4 +36,24 @@ input,
 select,
 textarea {
     max-width: 280px;
+}
+
+.home-form {
+    padding-bottom: 5px;
+}
+
+.home-table-tr-head {
+     font-size:1.3em; 
+     background-color:lightgray;
+}
+
+.home-table-tr-group {
+     background-color:beige;
+     font-size:1.1em;
+     font-weight:600;
+}
+
+.groups-form {
+     padding-top: 5px;
+     padding-bottom: 5px;
 }

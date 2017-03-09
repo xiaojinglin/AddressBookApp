@@ -33,18 +33,25 @@ namespace AddressBook.Controllers
             return View(contact);
         }
 
+        // Post: Edit
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Index(Contact contact)
         {
+            //Get the original contact from the database
             var original = _db.Contacts.Find(contact.ContactId);
+
+            //Get the contact from the database by name
             var UpdatedContact = _db.Contacts
                 .Where(c => c.Name.FirstName == contact.Name.FirstName && c.Name.LastName == contact.Name.LastName)
                 .SingleOrDefault();
+
             if (ModelState.IsValid)
             {
-                if (UpdatedContact == null || UpdatedContact.ContactId == contact.ContactId)
+                //The new name isn't confilct with the existing names or the contact name didn't change
+                if (UpdatedContact == null || UpdatedContact.ContactId == contact.ContactId )
                 {
+                    //Update contact
                     original.Name.FirstName = contact.Name.FirstName;
                     original.Name.LastName = contact.Name.LastName;
                     original.GroupId = contact.GroupId;

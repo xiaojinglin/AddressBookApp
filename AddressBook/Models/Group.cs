@@ -8,29 +8,17 @@ namespace AddressBook.Models
 {
     public class Group
     {
-        public enum GroupType
-
-        {
-            Family,
-            Friend,
-            Colleague,
-            Schoolmate,
-            Stranger
-        }
-
         public Group()
         {
             contacts = new List<Contact>();
         }
 
-        public Group(GroupType groundType, string groundName = null)
+        public Group(int groundId, string groundName)
         {
-            GroupId = (int)groundType;
-
-            // If we don't have a groundName argument, 
-            // then use the string representation of the grounp type for the groundName.
-            GroupName = groundName ?? groundType.ToString();
+            GroupId = groundId;
+            GroupName = groundName;
         }
+
         [Key]
         public int GroupId { get; set; }
 

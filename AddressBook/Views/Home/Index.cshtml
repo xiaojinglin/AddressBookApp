@@ -1,9 +1,9 @@
 ﻿@model IEnumerable<AddressBook.Models.Contact>
 @using AddressBook.Models
 
-    @{
+@{
     ViewBag.Title = "Index";
-    }
+}
 
 @if (TempData["Message"] != null)
 {
@@ -15,27 +15,30 @@
     </div>
 }
 
-    <p>
-        <div class="form-inline">
-            @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+<p>
+    <div class="form-inline">
+        @using (Html.BeginForm("Index", "Home", FormMethod.Get))
             {
-                <div class="col-lg-3 col-md-4 col-sm-5 col-xs-5">
-                    <div class="input-group">
-                        @Html.DropDownList("GroupId",
+            <div class="col-lg-3 col-md-4 col-sm-5 col-xs-5 home-form ">
+                <div class="input-group">
+                    @Html.DropDownList("GroupId",
                     (SelectList)ViewBag.GroupsSelectListItems, "Select a Group", new { @class = "form-control" })
-                        <div class="input-group-btn">
-                            <button type="submit" class="btn btn-default ">Filter<i class="glyphicon glyphicon-filter"></i></button>
-                            <input type="hidden" name="Search" id="Search" value="@ViewBag.Search" />
-                        </div>
+                    <div class="input-group-btn">
+                        <button type="submit" class="btn btn-default ">
+                            Filter
+                            <i class="glyphicon glyphicon-filter"></i>
+                        </button>
+                        <input type="hidden" name="Search" id="Search" value="@ViewBag.Search" />
                     </div>
                 </div>
-            }
-        </div>
+            </div>
+        }
+    </div>
 
 </p>
 
 <table class="table">
-    <tr style="font-size:1.3em; background-color:lightgray;">
+    <tr class="home-table-tr-head">
         <th>Group</th>
         <th>
             First Name
@@ -51,7 +54,7 @@
     {
         if (Model.Where(m => m.Group.GroupName == group.GroupName).FirstOrDefault() != null)
         {
-            <tr style="background-color:beige;font-size:1.1em; font-weight:600;">
+            <tr class="home-table-tr-group">
                 <td>@group.GroupName</td>
                 <td></td>
                 <td></td>
@@ -83,38 +86,3 @@
     }
 </table>
 
-    @*<table class="table table-hover">
-            <tr>
-                <th>
-                    @Html.DisplayNameFor(model => model.Group)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Name.FirstName)
-                </th>
-                <th>
-                    @Html.DisplayNameFor(model => model.Name.LastName)
-                </th>
-                <th></th>
-            </tr>
-
-            @foreach (var item in Model)
-            {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Group.GroupName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name.FirstName)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.Name.LastName)
-                    </td>
-                    <td>
-                        @Html.ActionLink("Edit", "Index", "Edit", new { id = item.ContactId }, null) |
-                        @Html.ActionLink("Details", "Details", new { id = item.ContactId }) |
-                        @Html.ActionLink("Delete", "Index", "Delete", new { id = item.ContactId }, null)
-                    </td>
-                </tr>
-            }
-
-</table>*@

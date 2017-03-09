@@ -1,5 +1,4 @@
 ﻿@model AddressBook.Models.Group
-
 @{
     ViewBag.Title = "Groups";
 }
@@ -15,9 +14,9 @@
 }
 
 
-@using (Html.BeginForm())
+@using (Html.BeginForm("AddGroup", "Group"))
 {
-    <div class="col-lg-3 col-md-4 col-sm-5 col-xs-5" style="padding-top: 5px">
+    <div class="col-lg-3 col-md-4 col-sm-5 col-xs-5 groups-form">
         <div class="input-group">
             @Html.EditorFor(model => model.GroupName, new { htmlAttributes = new { @class = "form-control" } })
             <div class="input-group-btn">
@@ -45,14 +44,10 @@
                 @group.GroupName
             </td>
             <td>
-                @Html.ActionLink("Details", "Index", new { GroupId = group.GroupId })
+                @Html.ActionLink("Edit", "GroupEdit", "Group", new { GroupId = group.GroupId }, null) |
+                @Html.ActionLink("Details", "Index","Home", new { GroupId = group.GroupId },null) |
+                @Html.ActionLink("Delete", "GroupDelete", "Group", new { GroupId = group.GroupId }, null) 
             </td>
         </tr>
     }
-
-
 </table>
-
-
-
-

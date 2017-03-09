@@ -8,10 +8,6 @@ namespace AddressBook.Models
 {
     public class Contact
     {
-        public Contact()
-        {
-            
-        }
         [Key]
         public int ContactId { get; set; }
 
