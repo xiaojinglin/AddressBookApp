@@ -10,17 +10,17 @@ This is an app that you can save your name, phone number, address, and email add
 It uses C#/.Net language, base on ASP.NET MVC, Entity Framework, SQL database.
 <p>This is the home page, it showcases a list of contact information.
 You can use the search box to search contacts, and use the Filter box to filter the contacts by group. </p>
-<img src="AddressBook/img/Index.png" >
+<img src="AddressBook/Img/Index.png" >
 <p>When clicking the "Add Contact" button, you can add new Contact to the list:</p>
-<img src="AddressBook/img/Add.png" >
+<img src="AddressBook/Img/Add.png" >
 <p>When clicking the "Group" button, you can see a list of group information:</p>
-<img src="AddressBook/img/Group.png" >
+<img src="AddressBook/Img/Group.png" >
 <p>When clicking the "edit" button, you can edit the current contact:<p>
-<img src="AddressBook/img/Edit.png" >
+<img src="AddressBook/Img/Edit.png" >
 <p>When clicking the "detail" button, you can check the detail of the current contact:<p>
-<img src="AddressBook/img/Detial.png" >
+<img src="AddressBook/Img/Detial.png" >
 <p>When clicking the "delete" button, you can delete the current contact:</p>
-<img src="AddressBook/img/Delete.png" >
+<img src="AddressBook/Img/Delete.png" >
 <a href="#solarApp">Go back to the top</a>
 
 <h2 id="requirements">Requirements</h2>
