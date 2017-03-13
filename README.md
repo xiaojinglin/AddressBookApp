@@ -10,17 +10,17 @@ This is an app that you can save your name, phone number, address, and email add
 It uses C#/.Net language, base on ASP.NET MVC, Entity Framework, SQL database.
 <p>This is the home page, it showcases a list of contact information.
 You can use the search box to search contacts, and use the Filter box to filter the contacts by group. </p>
-<img src="AddressBook/Img/Home.png" border="1" >
+<img src="AddressBook/Img/Home.png" style="border: 1px solid black;"  >
 <p>When clicking the "Add Contact", you can add a new contact to the list:</p>
-<img src="AddressBook/Img/Add.png" border="1">
+<img src="AddressBook/Img/Add.png" style="border: 1px solid black;">
 <p>When clicking the "Groups", you can see a list of group information:</p>
-<img src="AddressBook/Img/Group.png" border="1">
+<img src="AddressBook/Img/Group.png" style="border: 1px solid black;">
 <p>When clicking the "edit", you can edit the current contact:<p>
-<img src="AddressBook/Img/Edit.png" border="1">
+<img src="AddressBook/Img/Edit.png" style="border: 1px solid black;">
 <p>When clicking the "detail", you can check the detail of the current contact:<p>
-<img src="AddressBook/Img/Detail.png" border="1">
+<img src="AddressBook/Img/Detail.png" style="border: 1px solid black;">
 <p>When clicking the "delete", you can delete the current contact:</p>
-<img src="AddressBook/Img/Delete.png" border="1">
+<img src="AddressBook/Img/Delete.png" style="border: 1px solid black;">
 
 <h2 id="requirements">Requirements</h2>
 <p>AddressBookApp requires the following to run:</p>
