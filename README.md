@@ -21,7 +21,6 @@ You can use the search box to search contacts, and use the Filter box to filter 
 <img src="AddressBook/Img/Detail.png" >
 <p>When clicking the "delete", you can delete the current contact:</p>
 <img src="AddressBook/Img/Delete.png" >
-<a href="#AddressBookApp">Go back to the top</a>
 
 <h2 id="requirements">Requirements</h2>
 <p>AddressBookApp requires the following to run:</p>
