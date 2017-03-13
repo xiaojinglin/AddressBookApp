@@ -10,7 +10,7 @@ namespace AddressBook.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = true;
+            AutomaticMigrationsEnabled = false;
         }
 
         protected override void Seed(AddressBook.Models.Context context)

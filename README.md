@@ -33,6 +33,7 @@ You can use the search box to search contacts, and use the Filter box to filter 
 <ol>
   <li>Clone or download it</li>
   <li>Build Solution</li>
+  <li>Open the "Package Manager Console" and type "update-database"</li>
   <li>Run the project</li>
 </ol>
 
