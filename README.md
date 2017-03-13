@@ -6,9 +6,9 @@
   <li><a href="#contributing">Contributing</a></li>
 </ul>
 <h2 id="synopsis">Synopsis</h2>
-This is an app that you can save your name, phone number, address, and email address.
+This is an app that you can save your contact information.
 It uses C#/.Net language, base on ASP.NET MVC, Entity Framework, SQL database.
-<p>This is the home page, it showcases a list of contact information.
+<p>This is the home page, it lists the contact information.
 You can use the search box to search contacts, and use the Filter box to filter the contacts by group. </p>
 <img src="AddressBook/Img/Home.png">
 <p>When clicking the "Add Contact", you can add a new contact to the list:</p>
