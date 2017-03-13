@@ -11,15 +11,15 @@ It uses C#/.Net language, base on ASP.NET MVC, Entity Framework, SQL database.
 <p>This is the home page, it lists the contact information.
 You can use the search box to search contacts, and use the Filter box to filter the contacts by group. </p>
 <img src="AddressBook/Img/Home.png">
-<p>When clicking the "Add Contact", you can add a new contact to the list:</p>
+<p>When clicking the "Add Contact" link, you can add a new contact to the list:</p>
 <img src="AddressBook/Img/Add.png">
-<p>When clicking the "Groups", you can see a list of group information:</p>
+<p>When clicking the "Groups" link, you can see a list of group information:</p>
 <img src="AddressBook/Img/Group.png">
-<p>When clicking the "edit", you can edit the current contact:<p>
+<p>When clicking the "Edit" link, you can edit the current contact:<p>
 <img src="AddressBook/Img/Edit.png">
-<p>When clicking the "detail", you can check the detail of the current contact:<p>
+<p>When clicking the "Detail" link, you can see the detail information of the current contact:<p>
 <img src="AddressBook/Img/Detail.png">
-<p>When clicking the "delete", you can delete the current contact:</p>
+<p>When clicking the "Delete" link, you can delete the current contact:</p>
 <img src="AddressBook/Img/Delete.png">
 
 <h2 id="requirements">Requirements</h2>
