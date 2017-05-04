@@ -17,7 +17,7 @@
 
 <p>
     <div class="form-inline">
-        @using (Html.BeginForm("Index", "Home", FormMethod.Get))
+        @using (Html.BeginForm("Index", "Contact", FormMethod.Get))
             {
             <div class="col-lg-3 col-md-4 col-sm-5 col-xs-5 home-form ">
                 <div class="input-group">
@@ -74,9 +74,9 @@
                             @Html.DisplayFor(modelItem => item.Name.LastName)
                         </td>
                         <td>
-                            @Html.ActionLink("Edit", "Index", "Edit", new { id = item.ContactId }, null) |
+                            @Html.ActionLink("Edit", "Edit", new { id = item.ContactId }) |
                             @Html.ActionLink("Details", "Details", new { id = item.ContactId }) |
-                            @Html.ActionLink("Delete", "Index", "Delete", new { id = item.ContactId }, null)
+                            @Html.ActionLink("Delete", "Delete", new { id = item.ContactId })
                         </td>
                     </tr>
                 }

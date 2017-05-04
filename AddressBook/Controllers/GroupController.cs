@@ -115,8 +115,12 @@ namespace AddressBook.Controllers
             //Find the group and and the contacts in the group
             Group group = _db.Groups.Find(GroupId);
             var contacts = _db.Contacts.Where(c => c.GroupId == GroupId);
-            //Remove the contact and the group
-            _db.Contacts.RemoveRange(contacts);
+            //Move the contact from current group to ungrouped group
+            foreach (var c in contacts)
+            {
+                c.GroupId = 6;
+            }
+            //Remove the group
             _db.Groups.Remove(group);
             _db.SaveChanges();
             TempData["Message"] = "Your entry was successfully deleted!";

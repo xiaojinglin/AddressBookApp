@@ -29,6 +29,7 @@ namespace AddressBook.Migrations
             var groupColleague = new Group { GroupId = 3, GroupName = "Colleague" };
             var groupSchoolmate = new Group { GroupId = 4, GroupName = "Schoolmate" };
             var groupStranger = new Group { GroupId = 5, GroupName = "Stranger" };
+            var groupUngrouped = new Group { GroupId = 6, GroupName = "Ungrouped" };
 
             //Insert the groups to the database
             context.Groups.AddOrUpdate(
@@ -37,7 +38,8 @@ namespace AddressBook.Migrations
                 groupFriend,
                 groupColleague,
                 groupSchoolmate,
-                groupStranger
+                groupStranger,
+                groupUngrouped
                 );
 
             //Initialize the contacts and insert them to the database

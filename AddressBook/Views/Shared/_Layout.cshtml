@@ -17,16 +17,16 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Address Book", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Address Book", "Index", "Contact", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="collapse navbar-collapse">
                 <ul class="nav navbar-nav navbar-left">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Home", "Index", "Contact")</li>
                     <li>@Html.ActionLink("Groups", "Index", "Group")</li>
-                    <li>@Html.ActionLink("Add Contact", "Index", "Add")</li>
+                    <li>@Html.ActionLink("Add Contact", "Add", "Contact")</li>
                 </ul>
                 <div class="col-lg-3 col-md-4 col-sm-5 col-xs-5 navbar-search">
-                    @using (Html.BeginForm("Index", "Home", FormMethod.Get, new { @class = "navbar-form" }))
+                    @using (Html.BeginForm("Index", "Contact", FormMethod.Get, new { @class = "navbar-form" }))
                     {
 
                         <div class="input-group">
